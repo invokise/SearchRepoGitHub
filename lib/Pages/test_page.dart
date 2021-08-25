@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:third/model/api.dart';
+import 'package:third/API/api.dart';
 import 'package:third/model/rep_model.dart';
 
 class TestWidget extends StatefulWidget {
@@ -14,7 +14,7 @@ class TestWidget extends StatefulWidget {
 
 class _TestWidgetState extends State<TestWidget> {
 
-final searchRepos = API().getRepos();
+final searchRepos = API().getRepos('q');
 
   @override
   Widget build(BuildContext context) {

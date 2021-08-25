@@ -50,7 +50,7 @@ class Items {
   int? openIssuesCount;
   String? masterBranch;
   String? defaultBranch;
-  int? score;
+  double? score;
   String? archiveUrl;
   String? assigneesUrl;
   String? blobsUrl;
@@ -205,7 +205,7 @@ class Items {
     openIssuesCount = json['open_issues_count'] as int?;
     masterBranch = json['master_branch'] as String?;
     defaultBranch = json['default_branch'] as String?;
-    score = json['score'] as int?;
+    score = json['score'] as double?;
     archiveUrl = json['archive_url'] as String?;
     assigneesUrl = json['assignees_url'] as String?;
     blobsUrl = json['blobs_url'] as String?;

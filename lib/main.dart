@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:third/app_search.dart';
-import 'package:third/search_result.dart';
-import 'package:third/test_page.dart';
+import 'package:third/Pages/app_search.dart';
+import 'package:third/Pages/search_result.dart';
+import 'package:third/Pages/test_page.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:third/resourses/text_styles.dart';
+import 'package:third/constants/text_styles.dart';
 
 class AppSearch extends StatefulWidget {
   const AppSearch({Key? key}) : super(key: key);

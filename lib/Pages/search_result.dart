@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:third/resourses/text_styles.dart';
+import 'package:third/constants/text_styles.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({Key? key}) : super(key: key);
