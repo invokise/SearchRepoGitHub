@@ -14,7 +14,7 @@ class SearchResult extends StatelessWidget {
             style: AppTextStyles.blackText23,
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.red,
         elevation: 1,
       ),
       body: const Result(),
@@ -27,66 +27,68 @@ class Result extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 30),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text(
-                'ПО ЗАПРОСУ:',
+    return ListView(
+      children:[ Padding(
+        padding: const EdgeInsets.only(top: 30),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  'ПО ЗАПРОСУ:',
+                  style: TextStyle(color: Colors.grey),
+                ),
+                SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  '"ghj"',
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ],
+            ),
+            const Center(
+              child: Text(
+                'НАЙДЕНО: 697',
                 style: TextStyle(color: Colors.grey),
               ),
-              SizedBox(
-                width: 4,
-              ),
-              Text(
-                '"ghj"',
-                style: TextStyle(color: Colors.blue),
-              ),
-            ],
-          ),
-          const Center(
-            child: Text(
-              'НАЙДЕНО: 697',
-              style: TextStyle(color: Colors.grey),
             ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          const ContentWidget(
-            title: 'ghJSON',
-            pathImage: 'assets/images/gg.jpg',
-            name: 'Mathrioshka',
-            updated: 'Обновлено: 4 ноября',
-            followers: '8',
-          ),
-          const ContentWidget(
-            title: 'bbb',
-            pathImage: 'assets/images/gg.jpg',
-            name: 'laosijiiandlaosijii',
-            updated: 'Обновлено: 22 октября',
-            followers: '0',
-          ),
-          const ContentWidget(
-            title: 'testintegrastion',
-            pathImage: 'assets/images/gg.jpg',
-            name: 'TobiasTOPdesk',
-            updated: 'Обновлено: 18 октября',
-            followers: '0',
-          ),
-          const ContentWidget(
-            title: 'tfgfh',
-            pathImage: 'assets/images/gg.jpg',
-            name: 'vikasbaliyan',
-            updated: 'Обновлено: 9 января',
-            followers: '0',
-          ),
-        ],
+            const SizedBox(
+              height: 15,
+            ),
+            const ContentWidget(
+              title: 'ghJSON',
+              pathImage: 'assets/images/gg.jpg',
+              name: 'Mathrioshka',
+              updated: 'Обновлено: 4 ноября',
+              followers: '8',
+            ),
+            const ContentWidget(
+              title: 'bbb',
+              pathImage: 'assets/images/gg.jpg',
+              name: 'laosijiiandlaosijii',
+              updated: 'Обновлено: 22 октября',
+              followers: '0',
+            ),
+            const ContentWidget(
+              title: 'testintegrastion',
+              pathImage: 'assets/images/gg.jpg',
+              name: 'TobiasTOPdesk',
+              updated: 'Обновлено: 18 октября',
+              followers: '0',
+            ),
+            const ContentWidget(
+              title: 'tfgfh',
+              pathImage: 'assets/images/gg.jpg',
+              name: 'vikasbaliyan',
+              updated: 'Обновлено: 9 января',
+              followers: '0',
+            ),
+          ],
+        ),
       ),
-    );
+      ],);
   }
 }
 
@@ -161,7 +163,7 @@ class ContentWidget extends StatelessWidget {
             right: 63,
             child: Divider(
               color: Colors.grey,
-              height: 177,
+              height: 180,
             ),
           ),
           Positioned(
@@ -189,8 +191,7 @@ class ContentWidget extends StatelessWidget {
                         ),
                         Text(
                           followers,
-                          // ignore: prefer_const_constructors
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                       ],
                     ),
