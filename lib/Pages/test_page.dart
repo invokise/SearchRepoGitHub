@@ -24,9 +24,9 @@ final searchRepos = API().getRepos('q');
         future: searchRepos,
         builder: (context,snapshot){
           if (snapshot.hasData){
-          return ListView.builder(itemBuilder: (context, index){
+          return ListView.builder(itemCount: snapshot.data != null ? snapshot.data!.items!.length : 0,itemBuilder: (context, index){
             return Row(children: [
-               Text(snapshot.data!.items![index].id.toString()),
+               Flexible(child: Text(snapshot.data!.items![index].subscribersUrl.toString())),
             ],);
           });
           } else {

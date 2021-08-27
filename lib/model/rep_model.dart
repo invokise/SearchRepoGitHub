@@ -182,82 +182,83 @@ class Items {
     this.license,
   });
 
-  Items.fromJson(Map<String, dynamic> json) {
-    id = json['id'] as int?;
-    nodeId = json['node_id'] as String?;
-    name = json['name'] as String?;
-    fullName = json['full_name'] as String?;
-    owner = Owner.fromJson(json['owner'] as Map<String, dynamic>);
-    private = json['private'] as bool?;
-    htmlUrl = json['html_url'] as String?;
-    description = json['description'] as String?;
-    fork = json['fork'] as bool?;
-    url = json['url'] as String?;
-    createdAt = json['created_at'] as String?;
-    updatedAt = json['updated_at'] as String?;
-    pushedAt = json['pushed_at'] as String?;
-    homepage = json['homepage'] as String?;
-    size = json['size'] as int?;
-    stargazersCount = json['stargazers_count'] as int?;
-    watchersCount = json['watchers_count'] as int?;
-    language = json['language'] as String?;
-    forksCount = json['forks_count'] as int?;
-    openIssuesCount = json['open_issues_count'] as int?;
-    masterBranch = json['master_branch'] as String?;
-    defaultBranch = json['default_branch'] as String?;
-    score = json['score'] as double?;
-    archiveUrl = json['archive_url'] as String?;
-    assigneesUrl = json['assignees_url'] as String?;
-    blobsUrl = json['blobs_url'] as String?;
-    branchesUrl = json['branches_url'] as String?;
-    collaboratorsUrl = json['collaborators_url'] as String?;
-    commentsUrl = json['comments_url'] as String?;
-    commitsUrl = json['commits_url'] as String?;
-    compareUrl = json['compare_url'] as String?;
-    contentsUrl = json['contents_url'] as String?;
-    contributorsUrl = json['contributors_url'] as String?;
-    deploymentsUrl = json['deployments_url'] as String?;
-    downloadsUrl = json['downloads_url'] as String?;
-    eventsUrl = json['events_url'] as String?;
-    forksUrl = json['forks_url'] as String?;
-    gitCommitsUrl = json['git_commits_url'] as String?;
-    gitRefsUrl = json['git_refs_url'] as String?;
-    gitTagsUrl = json['git_tags_url'] as String?;
-    gitUrl = json['git_url'] as String?;
-    issueCommentUrl = json['issue_comment_url'] as String?;
-    issueEventsUrl = json['issue_events_url'] as String?;
-    issuesUrl = json['issues_url'] as String?;
-    keysUrl = json['keys_url'] as String?;
-    labelsUrl = json['labels_url'] as String?;
-    languagesUrl = json['languages_url'] as String?;
-    mergesUrl = json['merges_url'] as String?;
-    milestonesUrl = json['milestones_url'] as String?;
-    notificationsUrl = json['notifications_url'] as String?;
-    pullsUrl = json['pulls_url'] as String?;
-    releasesUrl = json['releases_url'] as String?;
-    sshUrl = json['ssh_url'] as String?;
-    stargazersUrl = json['stargazers_url'] as String?;
-    statusesUrl = json['statuses_url'] as String?;
-    subscribersUrl = json['subscribers_url'] as String?;
-    subscriptionUrl = json['subscription_url'] as String?;
-    tagsUrl = json['tags_url'] as String?;
-    teamsUrl = json['teams_url'] as String?;
-    treesUrl = json['trees_url'] as String?;
-    cloneUrl = json['clone_url'] as String?;
-    mirrorUrl = json['mirror_url'] as String?;
-    hooksUrl = json['hooks_url'] as String?;
-    svnUrl = json['svn_url'] as String?;
-    forks = json['forks'] as int?;
-    openIssues = json['open_issues'] as int?;
-    watchers = json['watchers'] as int?;
-    hasIssues = json['has_issues'] as bool?;
-    hasProjects = json['has_projects'] as bool?;
-    hasPages = json['has_pages'] as bool?;
-    hasWiki = json['has_wiki'] as bool?;
-    hasDownloads = json['has_downloads'] as bool?;
-    archived = json['archived'] as bool?;
-    disabled = json['disabled'] as bool?;
-    license = License.fromJson(json['license'] as Map<String, dynamic>);
+  factory Items.fromJson(Map<String, dynamic> json) {
+    return Items(
+    id : json['id'] as int?,
+    nodeId : json['node_id'] as String?,
+    name : json['name'] as String?,
+    fullName : json['full_name'] as String?,
+    owner : Owner.fromJson(json['owner'] as Map<String, dynamic>),
+    private : json['private'] as bool,
+    htmlUrl : json['html_url'] as String?,
+    description : json['description'] as String?,
+    fork : json['fork'] as bool?,
+    url : json['url'] as String?,
+    createdAt : json['created_at'] as String?,
+    updatedAt : json['updated_at'] as String?,
+    pushedAt : json['pushed_at'] as String?,
+    homepage : json['homepage'] as String?,
+    size : json['size'] as int?,
+    stargazersCount : json['stargazers_count'] as int?,
+    watchersCount : json['watchers_count'] as int?,
+    language : json['language'] as String?,
+    forksCount : json['forks_count'] as int?,
+    openIssuesCount : json['open_issues_count'] as int?,
+    masterBranch : json['master_branch'] as String?,
+    defaultBranch : json['default_branch'] as String?,
+    score : json['score'] as double?,
+    archiveUrl : json['archive_url'] as String?,
+    assigneesUrl : json['assignees_url'] as String?,
+    blobsUrl : json['blobs_url'] as String?,
+    branchesUrl : json['branches_url'] as String?,
+    collaboratorsUrl : json['collaborators_url'] as String?,
+    commentsUrl : json['comments_url'] as String?,
+    commitsUrl : json['commits_url'] as String?,
+    compareUrl : json['compare_url'] as String?,
+    contentsUrl : json['contents_url'] as String?,
+    contributorsUrl : json['contributors_url'] as String?,
+    deploymentsUrl : json['deployments_url'] as String?,
+    downloadsUrl : json['downloads_url'] as String?,
+    eventsUrl : json['events_url'] as String?,
+    forksUrl : json['forks_url'] as String?,
+    gitCommitsUrl : json['git_commits_url'] as String?,
+    gitRefsUrl : json['git_refs_url'] as String?,
+    gitTagsUrl : json['git_tags_url'] as String?,
+    gitUrl : json['git_url'] as String?,
+    issueCommentUrl : json['issue_comment_url'] as String?,
+    issueEventsUrl : json['issue_events_url'] as String?,
+    issuesUrl : json['issues_url'] as String?,
+    keysUrl : json['keys_url'] as String?,
+    labelsUrl : json['labels_url'] as String?,
+    languagesUrl : json['languages_url'] as String?,
+    mergesUrl : json['merges_url'] as String?,
+    milestonesUrl : json['milestones_url'] as String?,
+    notificationsUrl : json['notifications_url'] as String?,
+    pullsUrl : json['pulls_url'] as String?,
+    releasesUrl : json['releases_url'] as String?,
+    sshUrl : json['ssh_url'] as String?,
+    stargazersUrl : json['stargazers_url'] as String?,
+    statusesUrl : json['statuses_url'] as String?,
+    subscribersUrl : json['subscribers_url'] as String?,
+    subscriptionUrl : json['subscription_url'] as String?,
+    tagsUrl : json['tags_url'] as String?,
+    teamsUrl : json['teams_url'] as String?,
+    treesUrl : json['trees_url'] as String?,
+    cloneUrl : json['clone_url'] as String?,
+    mirrorUrl : json['mirror_url'] as String?,
+    hooksUrl : json['hooks_url'] as String?,
+    svnUrl : json['svn_url'] as String?,
+    forks : json['forks'] as int?,
+    openIssues : json['open_issues'] as int?,
+    watchers : json['watchers'] as int?,
+    hasIssues : json['has_issues'] as bool?,
+    hasProjects : json['has_projects'] as bool?,
+    hasPages : json['has_pages'] as bool?,
+    hasWiki : json['has_wiki'] as bool?,
+    hasDownloads : json['has_downloads'] as bool?,
+    archived : json['archived'] as bool?,
+    disabled : json['disabled'] as bool?,
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -386,25 +387,27 @@ class Owner {
     this.siteAdmin,
   });
 
-  Owner.fromJson(Map<String, dynamic> json) {
-    login = json['login'] as String?;
-    id = json['id'] as int?;
-    nodeId = json['node_id'] as String?;
-    avatarUrl = json['avatar_url'] as String?;
-    gravatarId = json['gravatar_id'] as String?;
-    url = json['url'] as String?;
-    receivedEventsUrl = json['received_events_url'] as String?;
-    type = json['type'] as String?;
-    htmlUrl = json['html_url'] as String?;
-    followersUrl = json['followers_url'] as String?;
-    followingUrl = json['following_url'] as String?;
-    gistsUrl = json['gists_url'] as String?;
-    starredUrl = json['starred_url'] as String?;
-    subscriptionsUrl = json['subscriptions_url'] as String?;
-    organizationsUrl = json['organizations_url'] as String?;
-    reposUrl = json['repos_url'] as String?;
-    eventsUrl = json['events_url'] as String?;
-    siteAdmin = json['site_admin'] as bool?;
+  factory Owner.fromJson(Map<String, dynamic> json) {
+    return Owner(
+    login : json['login'] as String?,
+    id : json['id'] as int?,
+    nodeId : json['node_id'] as String?,
+    avatarUrl : json['avatar_url'] as String?,
+    gravatarId : json['gravatar_id'] as String?,
+    url : json['url'] as String?,
+    receivedEventsUrl : json['received_events_url'] as String?,
+    type : json['type'] as String?,
+    htmlUrl : json['html_url'] as String?,
+    followersUrl : json['followers_url'] as String?,
+    followingUrl : json['following_url'] as String?,
+    gistsUrl : json['gists_url'] as String?,
+    starredUrl : json['starred_url'] as String?,
+    subscriptionsUrl : json['subscriptions_url'] as String?,
+    organizationsUrl : json['organizations_url'] as String?,
+    reposUrl : json['repos_url'] as String?,
+    eventsUrl : json['events_url'] as String?,
+    siteAdmin : json['site_admin'] as bool?,
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -448,13 +451,15 @@ class License {
     this.htmlUrl,
   });
 
-  License.fromJson(Map<String, dynamic> json) {
-    key = json['key'] as String?;
-    name = json['name'] as String?;
-    url = json['url'] as String?;
-    spdxId = json['spdx_id'] as String?;
-    nodeId = json['node_id'] as String?;
-    htmlUrl = json['html_url'] as String?;
+  factory License.fromJson(Map<String, dynamic> json) {
+    return License(
+      key : json['key'] as String?,
+      name : json['name'] as String?,
+      url : json['url'] as String?,
+      spdxId : json['spdx_id'] as String?,
+      nodeId : json['node_id'] as String?,
+      htmlUrl : json['html_url'] as String?,
+    );
   }
 
   Map<String, dynamic> toJson() {

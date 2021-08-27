@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
       routes: {
     
     '/': (context) => const AppSearch(),
-    '/second': (context) => const SearchResult(),
-    '/third': (context) => const TestWidget(),
+    '/third': (context) => const SearchResult(),
+    '/second': (context) => const TestWidget(),
   },
       debugShowCheckedModeBanner: false,
     );
