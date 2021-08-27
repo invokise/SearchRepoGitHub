@@ -3,6 +3,8 @@ import 'package:third/API/api.dart';
 import 'package:third/constants/text_styles.dart';
 import 'package:third/model/rep_model.dart';
 
+
+
 class SearchResult extends StatelessWidget {
   const SearchResult({Key? key}) : super(key: key);
 
@@ -29,42 +31,41 @@ class Result extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    'ПО ЗАПРОСУ:',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    'q',
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                ],
-              ),
-              const Center(
-                child: Text(
-                  'НАЙДЕНО: 5',
+    return Padding(
+      padding: const EdgeInsets.only(top: 30),
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  'ПО ЗАПРОСУ:',
                   style: TextStyle(color: Colors.grey),
                 ),
+                SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  'q',
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ],
+            ),
+            const Center(
+              child: Text(
+                'НАЙДЕНО: 5',
+                style: TextStyle(color: Colors.grey),
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              ContentWidget(),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            const ContentWidget(),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
@@ -79,7 +80,7 @@ class ContentWidget extends StatefulWidget {
 }
 
 class _ContentWidgetState extends State<ContentWidget> {
-  final searchRepos = API().getRepos('zxc');
+  final searchRepos = API().getRepos('q');
 
   @override
   Widget build(BuildContext context) {
