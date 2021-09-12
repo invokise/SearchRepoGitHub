@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:third/constants/text_styles.dart';
+import 'package:third/main.dart';
 
 class AppSearch extends StatefulWidget {
   const AppSearch({Key? key}) : super(key: key);
@@ -9,14 +10,13 @@ class AppSearch extends StatefulWidget {
 }
 
 class _AppSearchState extends State<AppSearch> {
-final textController = TextEditingController();
-
-
+  TextEditingController textController = TextEditingController();
+  bool _validate = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.deepPurpleAccent,
         title: const Center(
           child: Text(
             'ПОИСК',
@@ -31,6 +31,12 @@ final textController = TextEditingController();
             TextField(
               controller: textController,
               decoration: InputDecoration(
+                labelText: 'Enter the repository',
+                errorText: _validate ? 'Field cant be empty' : null,
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -51,7 +57,20 @@ final textController = TextEditingController();
                     ),
                   ),
                 ),
-                onPressed: () {Navigator.pushNamed(context, '/third');},
+                onPressed: () {
+                  setState(() {
+                    if (textController.text.isEmpty) {
+                      _validate = true;
+                      return;
+                    } else {
+                      _validate = false;
+                    }
+
+                    Navigator.pushNamed(context, '/second');
+                    final controllerText = textController.text;
+                    search.setTextValue(controllerText);
+                  });
+                },
                 child: const Text(
                   'Найти',
                   style: AppTextStyles.text16,
@@ -64,4 +83,3 @@ final textController = TextEditingController();
     );
   }
 }
-

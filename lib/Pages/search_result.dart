@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:third/API/api.dart';
 import 'package:third/constants/text_styles.dart';
+import 'package:third/main.dart';
 import 'package:third/model/rep_model.dart';
 
 class SearchResult extends StatelessWidget {
@@ -16,7 +16,7 @@ class SearchResult extends StatelessWidget {
             style: AppTextStyles.blackText23,
           ),
         ),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.deepPurpleAccent,
         elevation: 1,
       ),
       body: const Result(),
@@ -36,23 +36,23 @@ class Result extends StatelessWidget {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   'ПО ЗАПРОСУ:',
                   style: TextStyle(color: Colors.grey),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 4,
                 ),
                 Text(
-                  'q',
-                  style: TextStyle(color: Colors.blue),
+                  search.keyword,
+                  style: const TextStyle(color: Colors.blue),
                 ),
               ],
             ),
             const Center(
               child: Text(
-                'НАЙДЕНО: 5',
+                'НАЙДЕНО: 100',
                 style: TextStyle(color: Colors.grey),
               ),
             ),
@@ -77,18 +77,17 @@ class ContentWidget extends StatefulWidget {
 }
 
 class _ContentWidgetState extends State<ContentWidget> {
-  final searchRepos = API().getRepos('q');
-
+  final futureResult = search.future();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SearchRepos>(
-      future: searchRepos,
+      future: futureResult,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return SizedBox(
             height: MediaQuery.of(context).size.height,
             child: ListView.builder(
-              itemCount: snapshot.data != null ? snapshot.data!.totalCount : 0,
+              itemCount: snapshot.data!.items!.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(top: 9),
@@ -172,9 +171,11 @@ class _ContentWidgetState extends State<ContentWidget> {
                                       color: Colors.white,
                                     ),
                                     Text(
-                                      snapshot.data!.items![index].stargazersCount
+                                      snapshot
+                                          .data!.items![index].stargazersCount
                                           .toString(),
-                                      style: const TextStyle(color: Colors.white),
+                                      style:
+                                          const TextStyle(color: Colors.white),
                                     ),
                                   ],
                                 ),

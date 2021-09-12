@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:third/Pages/app_search.dart';
 import 'package:third/Pages/search_result.dart';
-import 'package:third/Pages/test_page.dart';
+import 'package:third/mobx/mobx.dart';
 
+final search = Search();
 void main() {
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -15,11 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-    
-    '/': (context) => const AppSearch(),
-    '/third': (context) => const SearchResult(),
-    '/second': (context) => const TestWidget(),
-  },
+        '/': (context) => const AppSearch(),
+        '/second': (context) => const SearchResult(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }
