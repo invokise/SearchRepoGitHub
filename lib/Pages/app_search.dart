@@ -11,7 +11,7 @@ class AppSearch extends StatefulWidget {
 
 class _AppSearchState extends State<AppSearch> {
   TextEditingController textController = TextEditingController();
-  bool _validate = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +28,13 @@ class _AppSearchState extends State<AppSearch> {
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
         child: Stack(
           children: [
-            TextField(
+            TextFormField(
               controller: textController,
               decoration: InputDecoration(
                 labelText: 'Enter the repository',
-                errorText: _validate ? 'Field cant be empty' : null,
+                errorText: search.validate ? 'Field cant be empty' : null,
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
-
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
@@ -58,18 +57,7 @@ class _AppSearchState extends State<AppSearch> {
                   ),
                 ),
                 onPressed: () {
-                  setState(() {
-                    if (textController.text.isEmpty) {
-                      _validate = true;
-                      return;
-                    } else {
-                      _validate = false;
-                    }
-
-                    Navigator.pushNamed(context, '/second');
-                    final controllerText = textController.text;
-                    search.setTextValue(controllerText);
-                  });
+                  search.validateFunc(textController, context);
                 },
                 child: const Text(
                   'Найти',

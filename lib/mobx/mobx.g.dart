@@ -24,25 +24,30 @@ mixin _$Search on _SearchBase, Store {
     });
   }
 
-  final _$_SearchBaseActionController = ActionController(name: '_SearchBase');
+  final _$validateAtom = Atom(name: '_SearchBase.validate');
 
   @override
-  void setTextValue(String text) {
-    final _$actionInfo = _$_SearchBaseActionController.startAction(
-        name: '_SearchBase.setTextValue');
-    try {
-      return super.setTextValue(text);
-    } finally {
-      _$_SearchBaseActionController.endAction(_$actionInfo);
-    }
+  bool get validate {
+    _$validateAtom.reportRead();
+    return super.validate;
   }
 
   @override
-  String getTextValue() {
+  set validate(bool value) {
+    _$validateAtom.reportWrite(value, super.validate, () {
+      super.validate = value;
+    });
+  }
+
+  final _$_SearchBaseActionController = ActionController(name: '_SearchBase');
+
+  @override
+  void validateFunc(
+      TextEditingController textController, BuildContext context) {
     final _$actionInfo = _$_SearchBaseActionController.startAction(
-        name: '_SearchBase.getTextValue');
+        name: '_SearchBase.validateFunc');
     try {
-      return super.getTextValue();
+      return super.validateFunc(textController, context);
     } finally {
       _$_SearchBaseActionController.endAction(_$actionInfo);
     }
@@ -62,7 +67,8 @@ mixin _$Search on _SearchBase, Store {
   @override
   String toString() {
     return '''
-keyword: ${keyword}
+keyword: ${keyword},
+validate: ${validate}
     ''';
   }
 }

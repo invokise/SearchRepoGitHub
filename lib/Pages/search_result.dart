@@ -29,41 +29,46 @@ class Result extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 30),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'ПО ЗАПРОСУ:',
-                  style: TextStyle(color: Colors.grey),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Text(
-                  search.keyword,
-                  style: const TextStyle(color: Colors.blue),
-                ),
-              ],
-            ),
-            const Center(
-              child: Text(
-                'НАЙДЕНО: 100',
-                style: TextStyle(color: Colors.grey),
+    return FutureBuilder<SearchRepos>(
+      future: search.future(), 
+      builder: (context,snapshot){
+        return 
+       Padding(
+        padding: const EdgeInsets.only(top: 30),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'ПО ЗАПРОСУ:',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  Text(
+                    search.keyword,
+                    style: const TextStyle(color: Colors.blue),
+                  ),
+                ],
               ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            const ContentWidget(),
-          ],
+              Center(
+                child: Text(
+                  'НАЙДЕНО:  ${snapshot.hasData ? snapshot.data!.totalCount.toString() : 0.toString()}',
+                  style: const TextStyle(color: Colors.grey),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const ContentWidget(),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+      },);
   }
 }
 
@@ -121,7 +126,7 @@ class _ContentWidgetState extends State<ContentWidget> {
                                 ),
                                 Row(
                                   children: [
-                                    const CircleAvatar(),
+                                    CircleAvatar(backgroundImage: NetworkImage(snapshot.data!.items![index].owner!.avatarUrl.toString()),),
                                     const SizedBox(
                                       width: 10,
                                     ),

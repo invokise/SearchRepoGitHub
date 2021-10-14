@@ -258,6 +258,7 @@ class Items {
     hasDownloads : json['has_downloads'] as bool?,
     archived : json['archived'] as bool?,
     disabled : json['disabled'] as bool?,
+    //license: License.fromJson(json['license'] as Map<String, dynamic>),
     );
   }
 
