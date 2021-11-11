@@ -42,7 +42,7 @@ class Result extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'ПО ЗАПРОСУ:',
+                    'По запросу:',
                     style: TextStyle(color: Colors.grey),
                   ),
                   const SizedBox(
