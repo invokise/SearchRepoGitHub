@@ -31,7 +31,7 @@ class _AppSearchState extends State<AppSearch> {
             TextFormField(
               controller: textController,
               decoration: InputDecoration(
-                labelText: 'Enter the repository',
+                hintText: 'Enter the repository',
                 errorText: search.validate ? 'Field cant be empty' : null,
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
