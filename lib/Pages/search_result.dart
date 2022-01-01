@@ -180,36 +180,39 @@ class _ContentWidgetState extends State<ContentWidget> {
                         child: Stack(
                           children: [
                             Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 5,
+                              ),
                               height: 30,
-                              width: 65,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(40),
                                 color: Colors.grey,
                               ),
-                            ),
-                            Positioned(
-                              top: 4,
-                              left: 2,
-                              child: InkWell(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.star_border_outlined,
-                                      size: 20,
-                                      color: Colors.white,
-                                    ),
-                                    Text(
-                                      snapshot
-                                          .data!.items![index].stargazersCount
-                                          .toString(),
-                                      style:
-                                          const TextStyle(color: Colors.white),
-                                    ),
-                                  ],
+                              child: Positioned(
+                                top: 4,
+                                left: 2,
+                                child: InkWell(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        Icons.star_border_outlined,
+                                        size: 20,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        snapshot
+                                            .data!.items![index].stargazersCount
+                                            .toString(),
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  onTap: () {},
                                 ),
-                                onTap: () {},
                               ),
                             ),
                           ],
