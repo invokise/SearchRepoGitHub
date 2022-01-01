@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:third/constants/text_styles.dart';
 import 'package:third/main.dart';
 import 'package:third/model/rep_model.dart';
+import 'package:third/services/date_time_service.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({Key? key}) : super(key: key);
@@ -10,12 +11,11 @@ class SearchResult extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text(
-            'РЕЗУЛЬТАТ ПОИСКА',
-            style: AppTextStyles.blackText23,
-          ),
+        title: const Text(
+          'РЕЗУЛЬТАТ ПОИСКА',
+          style: AppTextStyles.blackText23,
         ),
+        centerTitle: true,
         backgroundColor: Colors.deepPurpleAccent,
         elevation: 1,
       ),
@@ -30,45 +30,45 @@ class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SearchRepos>(
-      future: search.future(), 
-      builder: (context,snapshot){
-        return 
-       Padding(
-        padding: const EdgeInsets.only(top: 30),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'По запросу:',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    search.keyword,
-                    style: const TextStyle(color: Colors.blue),
-                  ),
-                ],
-              ),
-              Center(
-                child: Text(
-                  'НАЙДЕНО:  ${snapshot.hasData ? snapshot.data!.totalCount.toString() : 0.toString()}',
-                  style: const TextStyle(color: Colors.grey),
+      future: search.future(),
+      builder: (context, snapshot) {
+        return Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'По запросу:',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      search.keyword,
+                      style: const TextStyle(color: Colors.blue),
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              const ContentWidget(),
-            ],
+                Center(
+                  child: Text(
+                    'НАЙДЕНО:  ${snapshot.hasData ? snapshot.data!.totalCount.toString() : 0.toString()}',
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const ContentWidget(),
+              ],
+            ),
           ),
-        ),
-      );
-      },);
+        );
+      },
+    );
   }
 }
 
@@ -117,28 +117,50 @@ class _ContentWidgetState extends State<ContentWidget> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  snapshot.data!.items![index].name.toString(),
-                                  style: AppTextStyles.blackBold,
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5),
+                                  child: Text(
+                                    snapshot.data!.items![index].name
+                                        .toString(),
+                                    style: AppTextStyles.blackBold,
+                                  ),
                                 ),
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Row(
-                                  children: [
-                                    CircleAvatar(backgroundImage: NetworkImage(snapshot.data!.items![index].owner!.avatarUrl.toString()),),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      snapshot.data!.items![index].owner!.login
-                                          .toString(),
-                                    ),
-                                  ],
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5),
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundImage: NetworkImage(snapshot
+                                            .data!
+                                            .items![index]
+                                            .owner!
+                                            .avatarUrl
+                                            .toString()),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        snapshot
+                                            .data!.items![index].owner!.login
+                                            .toString(),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 const SizedBox(height: 25),
-                                Text(snapshot.data!.items![index].updatedAt
-                                    .toString()),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5),
+                                  child: Text(
+                                    DateTimeService.formatDate(
+                                      snapshot.data!.items![index].updatedAt
+                                          .toString(),
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -153,26 +175,29 @@ class _ContentWidgetState extends State<ContentWidget> {
                         ),
                       ),
                       Positioned(
-                        top: 15,
-                        right: 45,
+                        top: 8,
+                        right: 42,
                         child: Stack(
                           children: [
                             Container(
-                              height: 28,
-                              width: 52,
+                              height: 30,
+                              width: 65,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(40),
                                 color: Colors.grey,
                               ),
                             ),
                             Positioned(
-                              top: 2,
-                              left: 5,
+                              top: 4,
+                              left: 2,
                               child: InkWell(
                                 child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     const Icon(
                                       Icons.star_border_outlined,
+                                      size: 20,
                                       color: Colors.white,
                                     ),
                                     Text(

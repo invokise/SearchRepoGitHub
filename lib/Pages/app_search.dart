@@ -17,12 +17,11 @@ class _AppSearchState extends State<AppSearch> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurpleAccent,
-        title: const Center(
-          child: Text(
-            'ПОИСК',
-            style: AppTextStyles.blackBold,
-          ),
+        title: const Text(
+          'ПОИСК',
+          style: AppTextStyles.blackBold,
         ),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
