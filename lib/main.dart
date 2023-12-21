@@ -1,24 +1,22 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:third/Pages/app_search.dart';
-import 'package:third/Pages/search_result.dart';
-import 'package:third/mobx/mobx.dart';
+import 'package:get_it/get_it.dart';
+import 'package:third/api/github_repository_implementation.dart';
+import 'package:third/api/repository/repo.dart';
+import 'package:third/api/repository_interface.dart';
+import 'package:third/app/my_app.dart';
+import 'package:third/services/cache_service.dart';
+import 'package:third/stores/github_repository_store.dart';
 
-final search = Search();
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheService.initPreference();
+  GetIt.I.registerSingleton<RepositoryInterface>(
+      GitHubRepositoryImplementation(dio: Dio()));
+  GetIt.I.registerSingleton(GitHubRepositoryStore());
+  GetIt.I.registerSingleton(Repo(
+    repositoryInfterface: GetIt.I<RepositoryInterface>(),
+    cacheService: CacheService(),
+  ));
   runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      routes: {
-        '/': (context) => const AppSearch(),
-        '/second': (context) => const SearchResult(),
-      },
-      debugShowCheckedModeBanner: false,
-    );
-  }
 }
